@@ -1,0 +1,8 @@
+.addon{
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  border: 1px solid purple;
+  padding: 5px;
+  border-radius: 5px;
+}

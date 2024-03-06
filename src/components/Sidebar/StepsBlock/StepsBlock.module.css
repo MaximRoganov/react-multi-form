@@ -1,0 +1,6 @@
+.stepsBlock{
+  display: flex;
+}
+.stepsBlockActive{
+  color: greenyellow;
+}

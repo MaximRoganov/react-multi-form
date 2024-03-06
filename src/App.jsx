@@ -1,32 +1,49 @@
 import styles from "./App.module.css";
 import Sidebar from "./components/Sidebar/Sidebar";
+import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
+import { useState } from "react";
+import Navigation from "./components/Navigation/Navigation";
+import Header from "./components/Header/Header";
+// import PlanSelection from "./components/PlanSelection/PlanSelection";
+// import AddonSelection from "./components/AddonSelection/AddonSelection";
+// import SummaryTable from "./components/SummaryTable/SummaryTable";
+
 
 function App() {
+  const [activeStep, setActiveStep] = useState(1);
+
+  const stepsListData = [
+    {title:'YOUR INFO', header: 'Personal info', description: 'Please provide your name, email address, and phone number.'},
+    {title:'SELECT PLAN', header: 'Select your plan', description: 'You have the option of monthly or yearly billing.'},
+    {title:'ADD-ONS', header: 'Pick add-ons',description: 'Add-ons help enhance your gaming experience.'},
+    {title:'SUMMARY', header: 'Finishing up',description: 'Double-check everything looks OK before confirming.'}
+  ];
+
+  function stepForwardHandler(){
+    if(activeStep < stepsListData.length){
+      setActiveStep(activeStep + 1);
+    }
+  }
+
+  function stepBackHandler(){
+    if(activeStep > 1){
+      setActiveStep(activeStep - 1);
+    }
+  }
 
   return (
       <div className={styles.app}>
-        <Sidebar/>
+        <Sidebar activeStep={activeStep} stepsListData={stepsListData}/>
         <div className={styles.main_info}>
-          <h1 className={"main_info_title"}>Personal info</h1>
-          <p className={"main_info_description"}>Please provide your name, email address, and phone number.</p>
+          <Header activeStep={activeStep} stepsListData={stepsListData}/>
 
-          <form className={"main_info_form"}>
-            <label className={"main_info_form_block"}>
-              <div>Name</div>
-              <input type="text" placeholder="e.g. Stephen King" />
-            </label>
+          <div className={styles.main_info_content}>
+            <PersonalInfo/>
+          </div>
 
-            <label className={"main_info_form_block"}>
-              <div>Email Address</div>
-              <input type="text" placeholder="e.g. stephenking@lorem.com" />
-            </label>
 
-            <label className={"main_info_form_block"}>
-              <div>Phone Number</div>
-              <input type="text" placeholder="e.g. +1 234 567 890" />
-            </label>
-          </form>
-          <button className={"main_info_next_button"}>Next Step</button>
+          <Navigation activeStep={activeStep} stepsNumber={4} stepForwardHandler={stepForwardHandler} stepBackHandler={stepBackHandler}/>
+
         </div>
       </div>
   )

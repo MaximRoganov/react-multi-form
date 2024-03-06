@@ -1,36 +1,12 @@
 import styles from "./Sidebar.module.css";
+import StepsBlock from "./StepsBlock/StepsBlock";
 
-export default function Sidebar() {
+export default function Sidebar({activeStep, stepsListData}) {
+
+
   return (
   <div className={styles.sidebar}>
-    <div className={styles.steps_block}>
-      <div className={"steps_block_counter"}>1</div>
-      <div>
-        <div className={"steps_block_title"}>step 1</div>
-        <div className={"steps_block_description"}>YOUR INFO</div>
-      </div>
-    </div>
-    <div className={styles.steps_block}>
-      <div className={"steps_block_counter"}>2</div>
-      <div>
-        <div className={"steps_block_title"}>step 2</div>
-        <div className={"steps_block_description"}>SELECT PLAN</div>
-      </div>
-    </div>
-    <div className={styles.steps_block}>
-      <div className={"steps_block_counter"}>3</div>
-      <div>
-        <div className={"steps_block_title"}>step 3</div>
-        <div className={"steps_block_description"}>ADD-ONS</div>
-      </div>
-    </div>
-    <div className={styles.steps_block}>
-      <div className={"steps_block_counter"}>4</div>
-      <div>
-        <div className={"steps_block_title"}>step 4</div>
-        <div className={"steps_block_description"}>SUMMARY</div>
-      </div>
-    </div>
+  {stepsListData.map(({title}, index) => <StepsBlock key={title} isActive={index + 1 === activeStep } stepNumber={index + 1} description={title}/>)}
   </div>
   );
 }
