@@ -2,11 +2,6 @@
   display: flex;
   gap: 20px;
 }
-.plan{
-  border: 1px solid grey;
-  border-radius: 3px;
-  padding: 16px;
-}
 .periodSwitcher{
   display: flex;
   gap: 20px;
