@@ -1,44 +1,19 @@
-import styles from "./AddonSelection.module.css"
-
-export default function AddonSelection(){
+import AddonItem from "./AddonItem/AddonItem";
+// import styles from "./AddonSelection.module.css"
+import addonsData from "/src/data/addonsData";
+export default function AddonSelection({ formData, handleChangeFormData }) {
+  const addonsIds = formData.addonsIds;
   return (
     <div className="addonList">
-      <div className={styles.addon}>
-          <div className="checkboxWrapper">
-            <input type="checkbox" />
-          </div>
-          <div className="addonContent">
-            <p className="title">Online service</p>
-            <p className="description">Access to multiplayer games</p>
-          </div>
-          <div className="addonPrice">
-            +$1/mo
-          </div>
-      </div>
-      <div className={styles.addon}>
-          <div className="checkboxWrapper">
-            <input type="checkbox" />
-          </div>
-          <div className="addonContent">
-            <p className="title">Larger storage</p>
-            <p className="description">Extra 1TB of cloud save</p>
-          </div>
-          <div className="addonPrice">
-            +$2/mo
-          </div>
-      </div>
-      <div className={styles.addon}>
-          <div className="checkboxWrapper">
-            <input type="checkbox" />
-          </div>
-          <div className="addonContent">
-            <p className="title">Customizable profile</p>
-            <p className="description">Custom theme on your profile</p>
-          </div>
-          <div className="addonPrice">
-            +$2/mo
-          </div>
-      </div>
+      {addonsData.map((addonItem) => (
+        <AddonItem
+          key={addonItem.id}
+          addonsIds={addonsIds}
+          addon={addonItem}
+          handleChangeFormData={handleChangeFormData}
+          isMonthlyPrice={formData.isMonthlyPrice}
+        />
+      ))}
     </div>
   );
 }

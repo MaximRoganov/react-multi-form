@@ -1,27 +1,26 @@
+import PeriodSwitcher from "./PeriodSwitcher/PeriodSwitcher";
 import PlanItem from "./PlanItem/PlanItem";
 import styles from "./PlanSelection.module.css";
 import planData from "/src/data/planData";
 
-
-export default function PlanSelection({selectedPlanId}) {
-
+export default function PlanSelection({
+  formData,
+  handleChangeFormData
+}) {
   return (
     <>
       <div className={styles.plansList}>
         {planData.map((plan) => (
-          <PlanItem key={plan.id} plan={plan} checked={selectedPlanId === plan.id} />
+          <PlanItem
+            handleChangeFormData={handleChangeFormData}
+            key={plan.id}
+            plan={plan}
+            checked={formData.planId === plan.id}
+            isMonthlyPrice={formData.isMonthlyPrice}
+          />
         ))}
       </div>
-      <div className={styles.periodSwitcher}>
-        <label>
-          <p>Monthly</p>
-          <input type="radio" name="period" value="monthly" />
-        </label>
-        <label>
-          <p>Yearly</p>
-          <input type="radio" name="period" value="yearly" />
-        </label>
-      </div>
+      <PeriodSwitcher isMonthlyPrice={formData.isMonthlyPrice} handleChangeFormData={handleChangeFormData}/>
     </>
   );
 }
