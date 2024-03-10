@@ -15,10 +15,10 @@ const initialFormData = {
   addonsIds: [],
 };
 
-export default function MainContent({ activeStep }) {
+export default function MainContent({ activeStep, stepToHandler}) {
   const [formData, setFormData] = useState(initialFormData);
 
-  console.log(formData);
+  // console.log(formData);
 
   function handleChangeFormData(key, value) {
     const updatedFormData = { ...formData, [key]: value };
@@ -45,7 +45,7 @@ export default function MainContent({ activeStep }) {
           handleChangeFormData={handleChangeFormData}
         />
       )}
-      {activeStep === 4 && <SummaryTable />}
+      {activeStep === 4 && <SummaryTable stepToHandler={stepToHandler} formData={formData} />}
     </div>
   );
 }

@@ -21,12 +21,16 @@ function App() {
     }
   }
 
+  function stepToHandler(step){
+      setActiveStep(step);
+  }
+
   return (
       <div className={styles.app}>
         <Sidebar activeStep={activeStep} stepsListData={stepsListData}/>
         <div className={styles.main_info}>
           <Header activeStep={activeStep} stepsListData={stepsListData}/>
-          <MainContent activeStep={activeStep}/>
+          <MainContent activeStep={activeStep} stepToHandler={stepToHandler}/>
           
 
 
