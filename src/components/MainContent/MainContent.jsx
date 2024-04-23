@@ -4,18 +4,19 @@ import PlanSelection from "./forms/PlanSelection/PlanSelection";
 import AddonSelection from "./forms/AddonSelection/AddonSelection";
 import SummaryTable from "./forms/SummaryTable/SummaryTable";
 import { useState } from "react";
+import { FormDataContext } from "./../../Context";
 import planData from "/src/data/planData";
 
-const initialFormData = {
-  userName: "",
-  email: "",
-  phone: "",
-  planId: planData[0].id,
-  isMonthlyPrice: true,
-  addonsIds: [],
-};
+export default function MainContent({ activeStep, stepToHandler }) {
+  const initialFormData = {
+    userName: "",
+    email: "",
+    phone: "",
+    planId: planData[0].id,
+    isMonthlyPrice: true,
+    addonsIds: [],
+  };
 
-export default function MainContent({ activeStep, stepToHandler}) {
   const [formData, setFormData] = useState(initialFormData);
 
   // console.log(formData);
@@ -26,26 +27,13 @@ export default function MainContent({ activeStep, stepToHandler}) {
   }
 
   return (
-    <div className={styles.main_info_content}>
-      {activeStep === 1 && (
-        <PersonalInfo
-          handleChangeFormData={handleChangeFormData}
-          formData={formData}
-        />
-      )}
-      {activeStep === 2 && (
-        <PlanSelection
-          handleChangeFormData={handleChangeFormData}
-          formData={formData}
-        />
-      )}
-      {activeStep === 3 && (
-        <AddonSelection
-          formData={formData}
-          handleChangeFormData={handleChangeFormData}
-        />
-      )}
-      {activeStep === 4 && <SummaryTable stepToHandler={stepToHandler} formData={formData} />}
-    </div>
+    <FormDataContext.Provider value={{ formData, handleChangeFormData }}>
+      <div className={styles.main_info_content}>
+        {activeStep === 1 && <PersonalInfo />}
+        {activeStep === 2 && <PlanSelection />}
+        {activeStep === 3 && <AddonSelection />}
+        {activeStep === 4 && <SummaryTable stepToHandler={stepToHandler} />}
+      </div>
+    </FormDataContext.Provider>
   );
 }

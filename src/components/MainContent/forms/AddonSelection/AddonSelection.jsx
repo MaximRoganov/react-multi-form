@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import AddonItem from "./AddonItem/AddonItem";
 // import styles from "./AddonSelection.module.css"
 import addonsData from "/src/data/addonsData";
-export default function AddonSelection({ formData, handleChangeFormData }) {
+import { FormDataContext } from "../../../../Context";
+
+export default function AddonSelection() {
+  const {formData,handleChangeFormData} = useContext(FormDataContext);
   const addonsIds = formData.addonsIds;
   return (
     <div className="addonList">

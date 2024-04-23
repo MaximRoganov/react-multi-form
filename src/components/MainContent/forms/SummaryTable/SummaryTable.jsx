@@ -2,9 +2,13 @@ import style from "./SummaryTable.module.css";
 import SummaryTableAddonRow from "./SummaryTableAddonRow/SummaryTableAddonRow";
 import planData from "/src/data/planData";
 import addonsData from "/src/data/addonsData";
+import { useContext } from "react";
+import { FormDataContext } from "../../../../Context";
 
-export default function SummaryTable({ formData, stepToHandler }) {
+export default function SummaryTable({ stepToHandler }) {
+  const { formData } = useContext(FormDataContext);
   const { addonsIds, isMonthlyPrice, planId } = formData;
+
   const currentPlan = planData.find((plan) => plan.id === planId);
   const currentPlanTitle = currentPlan.title;
   const currentPlanPriceInfo = isMonthlyPrice
@@ -33,7 +37,13 @@ export default function SummaryTable({ formData, stepToHandler }) {
               <p>
                 {currentPlanTitle} ({paymentPeriodTitle})
               </p>
-              <button onClick={()=>{stepToHandler(2)}}>Change</button>
+              <button
+                onClick={() => {
+                  stepToHandler(2);
+                }}
+              >
+                Change
+              </button>
             </td>
             <td className={style.secondCell}>{currentPlanPriceInfo}</td>
           </tr>

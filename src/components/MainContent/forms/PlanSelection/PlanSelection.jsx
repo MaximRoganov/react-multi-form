@@ -1,12 +1,12 @@
+import { useContext } from "react";
 import PeriodSwitcher from "./PeriodSwitcher/PeriodSwitcher";
 import PlanItem from "./PlanItem/PlanItem";
 import styles from "./PlanSelection.module.css";
 import planData from "/src/data/planData";
+import { FormDataContext } from "../../../../Context";
 
-export default function PlanSelection({
-  formData,
-  handleChangeFormData
-}) {
+export default function PlanSelection() {
+  const {formData,handleChangeFormData} = useContext(FormDataContext);
   return (
     <>
       <div className={styles.plansList}>
