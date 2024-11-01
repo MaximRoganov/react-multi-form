@@ -1,4 +1,4 @@
-import styles from "./PlanItem.module.css";
+import styles from './PlanItem.module.css';
 
 export default function PlanItem({
   plan,
@@ -10,7 +10,7 @@ export default function PlanItem({
     <label className={styles.plan}>
       <input
         onChange={() => {
-          handleChangeFormData("planId", plan.id);
+          handleChangeFormData('planId', plan.id);
         }}
         type="radio"
         name="planType"

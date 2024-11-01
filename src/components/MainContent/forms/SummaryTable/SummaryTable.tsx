@@ -1,9 +1,9 @@
-import style from "./SummaryTable.module.css";
-import SummaryTableAddonRow from "./SummaryTableAddonRow/SummaryTableAddonRow";
-import planData from "/src/data/planData";
-import addonsData from "/src/data/addonsData";
-import { useContext } from "react";
-import { FormDataContext } from "../../../../Context";
+import style from './SummaryTable.module.css';
+import SummaryTableAddonRow from './SummaryTableAddonRow/SummaryTableAddonRow';
+import planData from '/src/data/planData';
+import addonsData from '/src/data/addonsData';
+import { useContext } from 'react';
+import { FormDataContext } from '../../../../Context';
 
 export default function SummaryTable({ stepToHandler }) {
   const { formData } = useContext(FormDataContext);
@@ -14,7 +14,7 @@ export default function SummaryTable({ stepToHandler }) {
   const currentPlanPriceInfo = isMonthlyPrice
     ? `${currentPlan.monthPrice}/mo`
     : `${currentPlan.yearPrice}/yr`;
-  const paymentPeriodTitle = isMonthlyPrice ? "Monthly" : "Yearly";
+  const paymentPeriodTitle = isMonthlyPrice ? 'Monthly' : 'Yearly';
 
   const addonsPrice = addonsIds.reduce((summ, addonId) => {
     const addon = addonsData.find((addon) => addon.id === addonId);
@@ -59,10 +59,10 @@ export default function SummaryTable({ stepToHandler }) {
 
           <tr>
             <td className={style.firstCell}>
-              Total (per {isMonthlyPrice ? "month" : "year"})
+              Total (per {isMonthlyPrice ? 'month' : 'year'})
             </td>
             <td className={style.secondCell}>
-              ${totalPrice}/{isMonthlyPrice ? "mo" : "yr"}
+              ${totalPrice}/{isMonthlyPrice ? 'mo' : 'yr'}
             </td>
           </tr>
         </tbody>

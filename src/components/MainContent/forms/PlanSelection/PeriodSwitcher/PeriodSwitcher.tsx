@@ -1,4 +1,4 @@
-import style from "./PeriodSwitcher.module.css";
+import style from './PeriodSwitcher.module.css';
 
 export default function PeriodSwitcher({
   isMonthlyPrice,
@@ -13,7 +13,7 @@ export default function PeriodSwitcher({
           name="period"
           value="monthly"
           onChange={() => {
-            handleChangeFormData("isMonthlyPrice", true);
+            handleChangeFormData('isMonthlyPrice', true);
           }}
           checked={isMonthlyPrice}
         />
@@ -25,7 +25,7 @@ export default function PeriodSwitcher({
           name="period"
           value="yearly"
           onChange={() => {
-            handleChangeFormData("isMonthlyPrice", false);
+            handleChangeFormData('isMonthlyPrice', false);
           }}
           checked={!isMonthlyPrice}
         />

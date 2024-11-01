@@ -1,4 +1,4 @@
-import styles from "./AddonItem.module.css";
+import styles from './AddonItem.module.css';
 
 export default function AddonItem({
   addon,
@@ -12,7 +12,7 @@ export default function AddonItem({
     const newAddonsIds = isChecked
       ? addonsIds.filter((addonId) => addonId !== id)
       : [...addonsIds, id];
-    handleChangeFormData("addonsIds", newAddonsIds);
+    handleChangeFormData('addonsIds', newAddonsIds);
   };
   return (
     <div className={styles.addon}>

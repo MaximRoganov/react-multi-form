@@ -1,15 +1,15 @@
-import { useContext } from "react";
-import { FormDataContext } from "../../../../Context";
+import { useContext } from 'react';
+import { FormDataContext } from '../../../../Context';
 
 export default function PersonalInfo() {
-  const {formData,handleChangeFormData} = useContext(FormDataContext);
+  const { formData, handleChangeFormData } = useContext(FormDataContext);
   return (
-    <form className={"main_info_form"}>
-      <label className={"main_info_form_block"}>
+    <form className={'main_info_form'}>
+      <label className={'main_info_form_block'}>
         <div>Name</div>
         <input
           onChange={(event) => {
-            handleChangeFormData("userName", event.target.value);
+            handleChangeFormData('userName', event.target.value);
           }}
           type="text"
           placeholder="e.g. Stephen King"
@@ -17,11 +17,11 @@ export default function PersonalInfo() {
         />
       </label>
 
-      <label className={"main_info_form_block"}>
+      <label className={'main_info_form_block'}>
         <div>Email Address</div>
         <input
           onChange={(event) => {
-            handleChangeFormData("email", event.target.value);
+            handleChangeFormData('email', event.target.value);
           }}
           type="text"
           placeholder="e.g. stephenking@lorem.com"
@@ -29,11 +29,11 @@ export default function PersonalInfo() {
         />
       </label>
 
-      <label className={"main_info_form_block"}>
+      <label className={'main_info_form_block'}>
         <div>Phone Number</div>
         <input
           onChange={(event) => {
-            handleChangeFormData("phone", event.target.value);
+            handleChangeFormData('phone', event.target.value);
           }}
           type="text"
           placeholder="e.g. +1 234 567 890"
